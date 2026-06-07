@@ -9,13 +9,23 @@ This project extracts video game data from the RAWG API, transforms and validate
 # Project Structure
 
 ```text
-video_game_etl_project/
+game-analytics-dashboard/
 
+├── diagrams/
+│   ├── Dataflow Diagram.png
+│   └── ER Diagram.png
+│
+├── docs/
+│   ├── project proposal.md
+│   └── schema doc.md
+│
+├── .env
+├── dashboard.png
 ├── ETL_script.py
+├── load_script.py
 ├── README.md
 ├── requirements.txt
-├── .env
-└── ER Diagram.png
+└── SQL.txt
 ```
 
 ---
@@ -183,23 +193,6 @@ Columns:
 
 ---
 
-# Derived Metrics
-
-## Rating Category
-
-Games are grouped into categories using rating values.
-
-| Rating Range | Category  |
-| ------------ | --------- |
-| 0 - 2        | Poor      |
-| 2 - 3        | Average   |
-| 3 - 4        | Good      |
-| 4 - 5        | Excellent |
-
-This field is generated during transformation and can be used for reporting and dashboard filtering.
-
----
-
 # Usage
 
 ## Run the ETL Pipeline
@@ -340,3 +333,130 @@ Features:
 * Ratings and review metrics
 * Platform and genre metadata
 * Regularly updated game information
+
+---
+
+# Power BI Dashboard
+
+## Dashboard Overview
+
+The Power BI dashboard provides an interactive view of video game trends, ratings, genres, platforms, and release activity using data collected from the RAWG API and stored in PostgreSQL (Supabase).
+
+The dashboard is designed to help users explore video game performance metrics, identify genre and platform trends, and discover highly rated games through interactive visualizations and filters.
+
+### Dashboard Features
+
+#### KPI Cards
+
+Provides high-level summary metrics including:
+
+* Total Games
+* Average Rating
+* Average Metacritic Score
+
+#### Genre Analysis
+
+Bar charts display:
+
+* Number of games by genre
+* Average rating by genre
+
+This allows users to compare genre popularity with overall game quality.
+
+#### Release Trends
+
+Line charts visualize:
+
+* Number of games released over time
+
+Users can identify growth patterns and release trends across different years.
+
+#### Platform Analysis
+
+Comparison charts display:
+
+* Number of games by platform
+* Average ratings by platform
+
+These visuals help identify the most popular and highest-performing gaming platforms.
+
+#### Top Rated Games
+
+Interactive tables display:
+
+* Highest-rated games
+* Ratings
+* Metacritic scores
+* Release information
+
+#### Interactive Filtering
+
+Users can dynamically filter the dashboard using slicers for:
+
+* Genre
+* Platform
+* Release Year
+
+All visualizations update automatically based on selected filters.
+
+---
+
+## How to Run the Dashboard
+
+### Prerequisites
+
+* Power BI Desktop
+* Access to the PostgreSQL database hosted in Supabase
+
+### Steps
+
+1. Open the Power BI project file (.pbix).
+2. Refresh the dataset connection.
+3. Power BI will retrieve the latest data from the PostgreSQL database.
+4. Use the dashboard pages, visuals, and slicers to explore the data.
+
+If the database has been updated using the ETL pipeline, select **Refresh** within Power BI to load the newest records.
+
+---
+
+## Business Insights
+
+Several insights can be identified from the current dataset:
+
+### Genre Insights
+
+* Action is the most common genre and contains the largest number of games.
+* Puzzle games have the highest average rating despite having fewer titles.
+
+This suggests that while Action games dominate the market in volume, Puzzle games may deliver stronger player satisfaction on average.
+
+### Platform Insights
+
+* PC contains the largest number of games in the dataset.
+* PlayStation 2 has the highest average rating among platforms represented.
+
+This indicates that platform popularity does not necessarily correlate with higher game ratings.
+
+### Release Trends
+
+The release trend visualizations can be used to identify periods of increased game production and changing industry activity over time.
+
+---
+
+## Dashboard Considerations
+
+### Limited Dataset
+
+The dashboard is built using a limited sample of data retrieved from the RAWG API. Results should be viewed as representative of the available dataset rather than the entire video game industry.
+
+### Many-to-Many Relationships
+
+Video games can belong to multiple genres and can be released on multiple platforms.
+
+Because of these many-to-many relationships:
+
+* Genre totals may exceed the number of unique games.
+* Platform totals may exceed the number of unique games.
+* Filtering by genre or platform may affect aggregated metrics differently than a one-to-one data model.
+
+These relationships are intentionally preserved to accurately represent how games are categorized and distributed across platforms.

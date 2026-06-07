@@ -1,0 +1,5 @@
+SELECT * FROM games
+SELECT * FROM platforms
+SELECT * FROM genres
+SELECT * FROM game_plaforms
+SELECT * FROM game_genres
