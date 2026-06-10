@@ -1,7 +1,9 @@
 # Video Game Trends & Analytics Dashboard Project Proposal
 
 Developer: Saren Chatham
+
 Target Audience: Video game enthusiasts 
+
 Technology Stack: Python, Power BI, RAWG Video Games Database API
 
 ## Background:
@@ -105,19 +107,33 @@ The Power BI dashboard will include:
 ## ETL Architecture Diagram
 
 RAWG REST API
+   
        ↓
+
 Python API Requests
+   
        ↓
+
 JSON Data Extraction
+  
        ↓
+
 Data Cleaning & Transformation (Pandas)
+   
        ↓
+
 SQLAlchemy ORM
+   
        ↓
+
 PostgreSQL Database
+    
        ↓
+
 Power BI Dashboard
+     
        ↓
+
 Interactive Insights & Visualizations
 
 ## Data Quality and Validation
@@ -126,11 +142,11 @@ Data quality checks identified a single missing value in the metacritic field. B
 
 ## Timeline
 
-Week 1 - Finalize project proposal, research API structure, obtain API key
-Week 2 - Build API extraction scripts and retrieve sample datasets
-Week 3 - Clean and transform JSON data, design database schema, load data into PostgreSQL
-Week 4 - Build Power BI dashboard and create visualizations 
-Week 5 - Final testing, dashboard refinement, presentation preparation, project submission
+* Week 1 - Finalize project proposal, research API structure, obtain API key
+* Week 2 - Build API extraction scripts and retrieve sample datasets
+* Week 3 - Clean and transform JSON data, design database schema, load data into PostgreSQL
+* Week 4 - Build Power BI dashboard and create visualizations 
+* Week 5 - Final testing, dashboard refinement, presentation preparation, project submission
 
 ## Expected Outcomes
 
